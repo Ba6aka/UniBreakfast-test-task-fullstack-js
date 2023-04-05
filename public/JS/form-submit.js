@@ -1,11 +1,8 @@
 const form = document.querySelector('form')
 
 form.addEventListener('submit', () => {
-    const formData = new FormData(form);
-
-    formData.append('dataTime', getTime())
-    formData.append('id', getId())
-
+    const formData = sanitazeAndGetFormData(form);
+    
     postData('/db.json', Object.fromEntries(formData))
         .then((response) => {
             console.log(response)
@@ -38,4 +35,20 @@ function getId() {
     localStorage.setItem('id', id)
 
     return id
+}
+
+function sanitazeAndGetFormData(form) {
+    const formData = new FormData(form);
+
+    for (const [key, value] of formData.entries()) {
+
+        const sanitizedValue = value.trim().replace(/[^a-zA-Z0-9-\s]/g, '');
+
+        formData.set(key, sanitizedValue);
+    }
+
+    formData.append('dataTime', getTime())
+    formData.append('id', getId())
+
+    return formData
 }
