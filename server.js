@@ -14,7 +14,7 @@ createServer(async function (req, res) {
         }
 
     }
-}).listen(1337)
+}).listen(process.env.PORT || 1337)
 
 //! Serve and save files
 function serveFile(path, res) {
