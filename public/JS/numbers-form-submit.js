@@ -5,6 +5,9 @@ const numberInput = document.getElementById('number');
 
 let nubmerForPost;
 
+getData('/getCalculation').
+    then(data => renderOutput(data))
+
 form.addEventListener('submit', () => {
     if (checkNegative.checked) {
         nubmerForPost = '-' + numberInput.value;
@@ -26,4 +29,15 @@ form.addEventListener('submit', () => {
     output.prepend(div)
 
     form.reset();
+
+    getData('/getCalculation').
+        then(data => renderOutput(data));
 })
+
+function renderOutput(html) {
+    const output = document.querySelector('.output');
+    setTimeout(() => {
+        output.innerHTML = html;
+    }, 7000);
+
+}
