@@ -2,7 +2,7 @@ const form = document.querySelector('form')
 
 form.addEventListener('submit', () => {
     const formData = sanitazeAndGetFormData(form);
-    
+
     postData('/db.json', Object.fromEntries(formData))
         .then((response) => {
             console.log(response)
@@ -51,4 +51,17 @@ function sanitazeAndGetFormData(form) {
     formData.append('id', getId())
 
     return formData
+}
+
+function createColorCode(word) {
+    let hash = 0;
+    for (let i = 0; i < word.length; i++) {
+        hash = word.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    let colorCode = '#';
+    for (let i = 0; i < 3; i++) {
+        let value = (hash >> (i * 8)) & 0xFF;
+        colorCode += ('00' + value.toString(16)).substr(-2);
+    }
+    return colorCode;
 }
