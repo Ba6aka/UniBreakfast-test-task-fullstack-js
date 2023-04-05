@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/average-numbers.css">
+    <title>Average Numbers</title>
+</head>
+
+<body>
+    <header>
+        <a href="index.html">Profile</a>
+        <a href="message.html">Messages</a>
+        <a href="average-numbers.html">Average Number</a>
+    </header>
+
+    <main>
+        <form action="javascript:">
+            <input type="number" step="any" name="number" placeholder="type your number" id="number">
+            <label>
+                <input type="checkbox"  value="negative" id="negative">
+                negative
+            </label>
+            <label>
+                <input type="checkbox" value="fractional" id="factorial">
+                fractional
+            </label>
+            <button type="Submit">Send number</button>
+        </form>
+        <div class="row">
+            <span>Last number</span>
+            <span>Your number</span>
+            <span>Average number</span>
+        </div>
+        <div class="output">
+            <div class="loader"></div>
+        </div>
+    </main>
+</body>
+
+</html>

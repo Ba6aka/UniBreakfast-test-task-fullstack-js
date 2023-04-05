@@ -1,0 +1,18 @@
+body{
+    margin: 0 auto;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    margin:20px 0px 20px 0px;
+}
+
+main{
+    display: flex;
+}
+
+main div {
+    margin: 20px;
+}
+
