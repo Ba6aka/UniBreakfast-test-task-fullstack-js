@@ -1,5 +1,5 @@
 const { createServer } = require('http');
-const { readFileSync, writeFileSync } = require('fs');
+const { readFileSync, writeFileSync, readdir, readdirSync } = require('fs');
 
 //! Create and listen server
 createServer(async function (req, res) {
@@ -15,6 +15,9 @@ createServer(async function (req, res) {
 
     }
 }).listen(process.env.PORT || 1337)
+
+console.log(readdirSync(__dirname))
+console.log(readdirSync(__dirname + '/public'))
 
 //! Serve and save files
 function serveFile(path, res) {
