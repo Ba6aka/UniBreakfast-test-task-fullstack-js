@@ -20,7 +20,6 @@ createServer(async function (req, res) {
 function serveFile(path, res) {
     let file;
     try {
-        console.log(__dirname)
         switch (path) {
             case '/message.html':
                 file = readFileSync(__dirname + '/public/message.html', 'utf-8')
@@ -29,8 +28,8 @@ function serveFile(path, res) {
                 break;
             case '/':
                 path += 'index.html'
-                console.log(__dirname + '/public' + path)
                 file = readFileSync(__dirname + '/public' + path)
+                console.log(file.toString())
                 break
             case '/getCalculation':
                 file = calculation()
@@ -45,7 +44,7 @@ function serveFile(path, res) {
     }
 
     catch (err) {
-        console.log(err)
+        console.log(err.message)
         file = readFileSync(__dirname + '/public/404.html');
         res.end(file);
     }
