@@ -43,7 +43,7 @@ function serveFile(path, res) {
                 break;
             default:
                 if (path.endsWith('.css') ) {
-                    res.setHeader('content-type', 'text/stylesheet');
+                    res.setHeader('content-type', 'text/css');
                 }
                 file = readFileSync(__dirname + '/public' + path);
         }
