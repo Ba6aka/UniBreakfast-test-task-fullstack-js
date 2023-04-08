@@ -16,8 +16,8 @@ createServer(async function (req, res) {
     }
 }).listen(process.env.PORT || 1337)
 
-console.log(readdirSync(__dirname))
-console.log(readdirSync(__dirname + '/public'))
+console.log(readdirSync(__dirname, { withFileTypes: true }))
+console.log(readdirSync(__dirname + '/public', { withFileTypes: true }))
 
 //! Serve and save files
 function serveFile(path, res) {
