@@ -22,6 +22,7 @@ console.log(readdirSync(__dirname + '/public'))
 //! Serve and save files
 function serveFile(path, res) {
     let file;
+    console.log(path)
     try {
         switch (path) {
             case '/message.html':
