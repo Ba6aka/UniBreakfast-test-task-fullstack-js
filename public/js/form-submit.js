@@ -1,7 +1,14 @@
-const form = document.querySelector('form')
+const authors = document.querySelectorAll('.author');
+const form = document.querySelector('form');
+
+deleteMessages()
+
+authors.forEach((author) => {
+    author.style.color = createColorCode(author.innerText)
+})
 
 form.addEventListener('submit', () => {
-    const formData = sanitazeAndGetFormData(form);
+    const formData = sanitazeAndGetFormData(form)
 
     postData('/db.json', Object.fromEntries(formData))
         .then((response) => {
@@ -16,14 +23,6 @@ form.addEventListener('submit', () => {
     location.reload()
 })
 
-
-function getTime() {
-    const today = new Date();
-    const now = today.toLocaleString();
-
-    return now
-}
-
 function getId() {
     if (!localStorage.getItem('id')) {
         let id = 1
@@ -35,6 +34,13 @@ function getId() {
     localStorage.setItem('id', id)
 
     return id
+}
+
+function getTime() {
+    const today = new Date();
+    const now = today.toLocaleString();
+
+    return now
 }
 
 function sanitazeAndGetFormData(form) {
