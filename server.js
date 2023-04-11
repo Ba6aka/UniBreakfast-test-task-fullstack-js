@@ -99,3 +99,23 @@ function renderMessages() {
 
     return html
 }
+
+function calculation (){
+    const json = readFileSync(__dirname + '/db.json', 'utf-8');
+    const arr = JSON.parse(json);
+    let html = '';
+ 
+    for (let i = 1; i < arr['numbers'].length ; i++){
+        let lastNumber = arr['numbers'][arr['numbers'].length - (i+1)];
+        let youNumber = arr['numbers'][arr['numbers'].length - (i)];
+        let avarageNumber = (lastNumber + youNumber) / 2
+        html += `
+        <div class="output-item">
+        <span>${lastNumber}</span>
+        <span>${youNumber}</span>
+        <span>${avarageNumber}</span>
+    </div>`
+    }
+    
+    return html
+}
